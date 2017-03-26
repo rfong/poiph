@@ -1,3 +1,8 @@
+/* Set up environment for two poi
+ * Fork of Matter.js Newton's cradle example
+ *   http://brm.io/matter-js/demo/#newtonsCradle
+ */
+
 var Example = Example || {};
 
 Example.poi = function() {
