@@ -1,4 +1,4 @@
 
 function onload() {
-    Example.newtonsCradle();
+    Example.poi();
 };
