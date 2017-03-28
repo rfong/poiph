@@ -1,11 +1,5 @@
 /* Controllers for poi game. */
 
-
-function onload() {
-    Example.poi();
-};
-
-
 function gameLoop() {
     /* todo: look at
      * Matter.Engine.update

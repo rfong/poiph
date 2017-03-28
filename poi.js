@@ -57,7 +57,7 @@ Example.poi = function() {
         return newtonsCradle;
     };
 
-    var cradle = Composites.poi(280, 100, 2, 30, 200);
+    var cradle = Composites.poi(200, 100, 2, 30, 200);
     World.add(world, cradle);
     Body.translate(cradle.bodies[0], { x: -180, y: -100 });
     
