@@ -31,7 +31,8 @@ Example.poi = function() {
         options: {
             width: Math.min(document.documentElement.clientWidth, 800),
             height: Math.min(document.documentElement.clientHeight, 600),
-            showVelocity: true
+            showVelocity: true,
+            wireframes: false,
         }
     });
 
