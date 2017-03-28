@@ -3,6 +3,8 @@
  *   http://brm.io/matter-js/demo/#newtonsCradle
  */
 
+var dirtyConstraint = null;
+
 var Example = Example || {};
 
 Example.poi = function() {
@@ -49,6 +51,7 @@ Example.poi = function() {
                 circle = Bodies.circle(xx + i * (size * separation), yy + length, size, 
                             { inertia: Infinity, restitution: 1, friction: 0, frictionAir: 0.0001, slop: 1 }),
                 constraint = Constraint.create({ pointA: { x: xx + i * (size * separation), y: yy }, bodyB: circle });
+                dirtyConstraint = constraint;
 
             Composite.addBody(newtonsCradle, circle);
             Composite.addConstraint(newtonsCradle, constraint);
