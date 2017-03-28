@@ -29,9 +29,9 @@ Example.poi = function() {
         element: document.body,
         engine: engine,
         options: {
-            width: Math.min(document.documentElement.clientWidth, 800),
-            height: Math.min(document.documentElement.clientHeight, 600),
-            showVelocity: true,
+            width: Math.min(document.documentElement.clientWidth, 1920),
+            height: Math.min(document.documentElement.clientHeight, 1080),
+            //showVelocity: true,
             wireframes: false,
         }
     });
@@ -49,19 +49,55 @@ Example.poi = function() {
 
         for (var i = 0; i < number; i++) {
             var separation = 1.9,
-                circle = Bodies.circle(xx + i * (size * separation), yy + length, size, 
-                            { inertia: Infinity, restitution: 1, friction: 0, frictionAir: 0.0001, slop: 1 }),
-                constraint = Constraint.create({ pointA: { x: xx + i * (size * separation), y: yy }, bodyB: circle });
-                dirtyConstraint = constraint;
+                circle = Bodies.circle(
+                    xx + i * (size * separation), yy + length, size, 
+                    {
+                        inertia: Infinity,
+                        restitution: 1,
+                        friction: 0,
+                        frictionAir: 0.0001, 
+                        slop: 1,
+                        render: {
+                            strokeStyle: 'transparent',
+                            //lineWidth: 0, 
+                            fillStyle: '#11EFDE',
 
+                        },
+                    });
+                tether = Constraint.create({ pointA: { x: xx + i * (size * separation), y: yy }, bodyB: circle,
+                    render: {
+                        strokeStyle: 'blue',
+                    } 
+                });
+                dirtyConstraint = tether;
+
+            var shameCircle = Bodies.circle(
+                xx + i * (size * separation), yy + length, size, 
+                    {
+                        inertia: Infinity,
+                        restitution: 1,
+                        friction: 0,
+                        frictionAir: 0.0001, 
+                        slop: 1,
+                        render: {
+                            strokeStyle: 'transparent',
+                            fillStyle: '#11EFDE',
+                        }
+                    }
+                );
+            var shameConstraint = Constraint.create({ 
+                bodyA: shameCircle,
+                bodyB: circle,
+            });
+
+            Composite.addConstraint(newtonsCradle, tether);    
             Composite.addBody(newtonsCradle, circle);
-            Composite.addConstraint(newtonsCradle, constraint);
         }
 
         return newtonsCradle;
     };
 
-    var cradle = Composites.poi(200, 100, 2, 30, 200);
+    var cradle = Composites.poi(200, 100, 1, 30, 200);
     World.add(world, cradle);
     Body.translate(cradle.bodies[0], { x: -180, y: -100 });
     
