@@ -64,7 +64,14 @@ Example.poi = function() {
 
                         },
                     });
-                tether = Constraint.create({ pointA: { x: xx + i * (size * separation), y: yy }, bodyB: circle,
+                
+                tether = Constraint.create(
+                { 
+                    pointA: { 
+                        x: xx + i * (size * separation), 
+                        y: yy 
+                    }, 
+                    bodyB: circle,
                     render: {
                         strokeStyle: 'blue',
                     } 
