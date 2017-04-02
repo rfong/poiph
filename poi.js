@@ -71,6 +71,7 @@ Example.poi = function() {
                 });
                 dirtyConstraint = tether;
 
+            /*
             var shameCircle = Bodies.circle(
                 xx + i * (size * separation), yy + length, size, 
                     {
@@ -89,9 +90,12 @@ Example.poi = function() {
                 bodyA: shameCircle,
                 bodyB: circle,
             });
+            */
 
             Composite.addConstraint(newtonsCradle, tether);    
             Composite.addBody(newtonsCradle, circle);
+            //Composite.addConstraint(newtonsCradle, shameConstraint);    
+            //Composite.addBody(newtonsCradle, shameCircle);
         }
 
         return newtonsCradle;
