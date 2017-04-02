@@ -54,8 +54,8 @@ Example.poi = function() {
                     {
                         inertia: Infinity,
                         restitution: 1,
-                        friction: 0,
-                        frictionAir: 0.0001, 
+                        friction: 5,
+                        frictionAir: 0.001, 
                         slop: 1,
                         render: {
                             strokeStyle: 'transparent',
