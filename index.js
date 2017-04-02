@@ -26,8 +26,11 @@ function circleLimiter(x, y) {
     var CIRCLE_R = 300;
 
     var r = Math.sqrt(Math.pow(x - CIRCLE_X, 2) + Math.pow(y - CIRCLE_Y, 2));
-    var ratio = CIRCLE_R / r;
+    if (r <= CIRCLE_R) {
+        return [x, y];
+    }
 
+    var ratio = CIRCLE_R / r;
     return [
         CIRCLE_X + (x - CIRCLE_X) * ratio,
         CIRCLE_Y + (y - CIRCLE_Y) * ratio
